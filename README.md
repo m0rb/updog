@@ -24,4 +24,4 @@ This is the start of a small collection of tools, utils, and scripts for device 
 
 ## dummyns.pl - Dummy Name Server
 A tiny DNS simulator that logs in NCSA Common Log Format
-(Requires Net::DNS::Server)
+(Requires Net::DNS::Nameserver)

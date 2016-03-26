@@ -4,6 +4,7 @@
 #
 # 3/26/16 - chris_commat_misentropic_commercial
 use warnings;
+use strict;
 use Net::Twitter;
 
 my $nt = Net::Twitter->new(

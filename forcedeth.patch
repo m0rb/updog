@@ -1,0 +1,34 @@
+--- forcedeth.c	2016-03-26 10:14:11.877282706 -0700
++++ forcedeth.c.randmac	2016-03-26 10:26:48.433307970 -0700
+@@ -934,6 +934,12 @@
+  */
+ static int phy_power_down;
+
++/*
++ * Force MAC address randomization
++ *
++ */
++static bool randmac = false;
++
+ static inline struct fe_priv *get_nvpriv(struct net_device *dev)
+ {
+ 	return netdev_priv(dev);
+@@ -5810,7 +5816,7 @@
+ 			__func__);
+ 	}
+
+-	if (!is_valid_ether_addr(dev->dev_addr)) {
++	if (!is_valid_ether_addr(dev->dev_addr) || randmac ) {
+ 		/*
+ 		 * Bad mac address. At least one bios sets the mac address
+ 		 * to 01:23:45:67:89:ab
+@@ -6371,6 +6377,9 @@
+ module_param(debug_tx_timeout, bool, 0);
+ MODULE_PARM_DESC(debug_tx_timeout,
+ 		 "Dump tx related registers and ring when tx_timeout happens");
++module_param(randmac, bool, 0);
++MODULE_PARM_DESC(randmac,
++		 "force randomization of the MAC address");
+
+ module_pci_driver(forcedeth_pci_driver);
+ MODULE_AUTHOR("Manfred Spraul <manfred@colorfullife.com>");

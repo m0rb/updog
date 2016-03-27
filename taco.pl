@@ -19,4 +19,4 @@ traits   => [qw/API::RESTv1_1/],
 die unless $nt->authorized;
 # note: you'll need to swap out the example user_id with your own.
 my $t = $nt->new_direct_message({ user_id => 12345678, text => @ARGV });
-print "$t->{text}\n";
+print "$t->{entities}{urls}[0]{url}\n";
